@@ -16,7 +16,7 @@
                         ConvertirPesosADolares();
                         break;
                     case "2":
-                        Console.WriteLine("Dolares a Pesos");
+                        ConvertirDolaresAPesos();
                         break;
                     default:
                         Console.WriteLine("Opcion Incorrecta");
@@ -24,8 +24,7 @@
                 }
                 Console.ReadLine();
             }
-            //decimal conversion = PesosADolares(20.43m, 50000m);
-            //Console.WriteLine(conversion.ToString("N2"));
+
         }
 
         static void MostrarMenu()
@@ -38,7 +37,7 @@
         }
         static void ConvertirPesosADolares()
         {
-          Console.WriteLine("Pesos a dolares");
+            Console.WriteLine("Pesos a dolares");
             Console.WriteLine("Introducir tipo de cambio");
 
             string respuestaUsuario = Console.ReadLine();
@@ -49,15 +48,39 @@
             respuestaUsuario = Console.ReadLine();
             decimal.TryParse(respuestaUsuario, out decimal pesos);
 
-            decimal dolares = PesosADolares (tipoDeCambio, pesos);
+            decimal dolares = PesosADolares(tipoDeCambio, pesos);
             Console.WriteLine($"Cantidad en dolares: {dolares}");
+        }
+        static void ConvertirDolaresAPesos()
+        {
+            Console.WriteLine("Dolares a Pesos");
+            Console.WriteLine("Introducir tipo de cambio");
+
+            string respuestaUsuario = Console.ReadLine();
+            decimal.TryParse(respuestaUsuario, out decimal tipoDeCambio);
+
+            Console.WriteLine("introducir la cantidad en dolares");
+            respuestaUsuario = Console.ReadLine();
+
+            decimal.TryParse(respuestaUsuario, out decimal dolares);
+
+            decimal pesos = DolaresAPesos(tipoDeCambio, dolares);
+            Console.WriteLine($"La cantidad en pesos es {pesos.ToString("N2")}");
+
         }
         static decimal PesosADolares(decimal tipoCambio, decimal pesos)
         {
             decimal dolares = 0.00m;
-            
+
             dolares = pesos / tipoCambio;
             return dolares;
+        }
+
+        static decimal DolaresAPesos(decimal tipoCambio, decimal dolares)
+        {
+            decimal pesos = 0.0m;
+            pesos = tipoCambio * dolares;
+            return pesos;
         }
     }
 }
