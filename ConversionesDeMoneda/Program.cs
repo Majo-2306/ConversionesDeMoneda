@@ -1,13 +1,17 @@
 ﻿namespace ConversionesDeMoneda
 {
     internal class Program
+        //tarea requisito que le agreguemos la documentacion que hace cada linea de codigo, es para poner el paso a paso, 
     {
+        //El Main es el metodo principal
         static void Main(string[] args)
+            //  El while crea un ciclo infinito
         {
             while (true)
             {
+                //estamos invocando el metodo MostarMenu
                 MostrarMenu();
-
+                
                 string respuestaUsuario = Console.ReadLine();
 
                 switch (respuestaUsuario)
@@ -26,7 +30,7 @@
             }
 
         }
-
+        //Este es un metodo que me imprime las opciones para el usuario
         static void MostrarMenu()
         {
             Console.Clear();
@@ -68,12 +72,15 @@
             Console.WriteLine($"La cantidad en pesos es {pesos.ToString("N2")}");
 
         }
+
+        //el tipoCambio es una funcion que recibe algo y manda el resultado, funcion que recibe un tipo de cambio y cantidad en pesos entre // y regresa el resultado de la division
         static decimal PesosADolares(decimal tipoCambio, decimal pesos)
         {
             decimal dolares = 0.00m;
 
             dolares = pesos / tipoCambio;
             return dolares;
+            
         }
 
         static decimal DolaresAPesos(decimal tipoCambio, decimal dolares)
