@@ -60,7 +60,7 @@
             decimal.TryParse(respuestaUsuario, out decimal pesos);
 
             decimal dolares = PesosADolares(tipoDeCambio, pesos);
-            Console.WriteLine($"Cantidad en dolares: {dolares}");
+            Console.WriteLine($"Cantidad en dolares: {dolares.ToString("N2")}");
         }
         static void ConvertirDolaresAPesos()
         {
@@ -89,10 +89,10 @@
 
             Console.WriteLine("Introducir la cantidad de pesos");
             respuestaUsuario = Console.ReadLine();
-            decimal.TryParse(respuestaUsuario, out decimal pesos);
+            decimal.TryParse(respuestaUsuario, out decimal euros);
 
-            decimal euros = PesosAEuros(tipoDeCambio, pesos);
-            Console.WriteLine($"Cantidad de pesos en euros: {euros.ToString("N2")}");
+            decimal pesos = PesosAEuros(tipoDeCambio, euros);
+            Console.WriteLine($"Cantidad de pesos en euros: {pesos.ToString("N2")}");
         }
 
         static void ConvertirEurosAPesos()
@@ -105,23 +105,23 @@
 
             Console.WriteLine("Introducir la cantidad de Euros");
             respuestaUsuario= Console.ReadLine();
-            decimal.TryParse(respuestaUsuario, out decimal euros);
+            decimal.TryParse(respuestaUsuario, out decimal pesos);
 
-            decimal pesos = EurosAPesos(tipoDeCambio, euros);
-            Console.WriteLine($"Cantidad de euros en pesos es {pesos.ToString("N2")}");
+            decimal euros = EurosAPesos(tipoDeCambio, pesos);
+            Console.WriteLine($"Cantidad de euros en pesos es {euros.ToString("N2")}");
         }
 
 
         static decimal EurosAPesos(decimal tipoCambio, decimal euros)
         {
             decimal pesos = 0.0m;
-            pesos= tipoCambio*euros;
+            pesos= euros/tipoCambio;
             return pesos;
         }
         static decimal PesosAEuros(decimal tipoCambio, decimal pesos)
         {
             decimal euros = 0.0m;
-            euros = pesos / tipoCambio;
+            euros = pesos * tipoCambio;
             return euros;
         }
         //el tipoCambio es una funcion que recibe algo y manda el resultado, funcion que recibe un tipo de cambio y cantidad en pesos entre // y regresa el resultado de la division
